@@ -1,16 +1,35 @@
-<h1>Mein Portfolio</h1>
-<div class="search-area">
-    <h3>Aktienkurse anzeigen:</h3>
-    <%= form_tag search_stock_path, method: :get do %>
-    <div class="form-group row">
-        <div class="col-sm-9 no-right-padding">
-            <%= text_field_tag :stock, params[:stock], placeholder: "Tickersymbol", autofocus: true, class:"form-control form-control-lg"%>
-        </div>
-        <div class="col-sm-3 no-left-padding">
-            <%= button_tag type: :submit, class:"btn btn-success" do%>
-            <%= fa_icon "search 2x" %>
-            <% end%>
+<div class="row">
+    <div class="col-12">
+        <h1>Mein Portfolio</h1>
+        <div class="search-area">
+            <div class="card-header float-right mt-4">
+                <h5>Top 10 S&P 500 Stocks by Index Weight </h3> <br>
+                    1. Microsoft Corp. (MSFT) <br>
+                    2. Apple Inc. (AAPL) <br>
+                    3. Amazon.com Inc. (AMZN) <br>
+                    4. Facebook Inc. (FB) <br>
+                    5. Alphabet Inc. Class A Shares (GOOGL) <br>
+                    6. Alphabet Inc. Class C Shares (GOOG) <br>
+                    7. Johnson & Johnson (JNJ) <br>
+                    8. Berkshire Hathaway Inc. (BRK.B) <br>
+                    9. Visa Inc. (V) <br>
+                    10. Procter & Gamble (PG) <br>
+            </div>
+            <h3>Aktienkurse anzeigen:</h3>
+            <%= form_tag search_stock_path, remote: true, method: :get do %>
+            <div class="form-group row">
+                <div class="col-sm-9 no-right-padding no-left-padding">
+                    <%= text_field_tag :stock, params[:stock], placeholder: "Tickersymbol", autofocus: true, class:"form-control form-control-lg"%>
+                </div>
+                <div class="col-sm-3 no-left-padding">
+                    <%= button_tag type: :submit, class:"btn btn-success" do%>
+                    <%= fa_icon "search 2x" %>
+                    <% end%>
+                </div>
+            </div>
+            <%end%>
+            <div id="results">
+            </div>
         </div>
     </div>
-    <%end%>
 </div>

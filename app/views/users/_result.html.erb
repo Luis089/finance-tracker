@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-9 no-right-padding no-left-padding">
+        <%= render 'layouts/messages' %>
+        <%if @stock %>
+        <div class="card card-header results-block">
+            <strong>Symbol: </strong> <%= @stock.ticker%>
+            <strong>Name: </strong> <%= @stock.name%>
+            <strong>Letzter Preis: </strong> <%= @stock.last_price%>
+        </div>
+        <%end%>
+    </div>
+</div>
