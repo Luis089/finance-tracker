@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
+gem 'devise-i18n'
 gem 'iex-ruby-client'
 gem "font-awesome-rails"
 

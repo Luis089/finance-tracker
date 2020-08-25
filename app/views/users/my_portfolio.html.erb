@@ -1,24 +1,10 @@
 <div class="row">
     <div class="col-12">
-        <h1>Mein Portfolio </h1>
         <div class="search-area">
-            <div class="card-header float-right mb-4">
-                <h5>Top 10 S&P 500 Stocks by Index Weight </h3> <br>
-                    1. Microsoft Corp. (MSFT) <br>
-                    2. Apple Inc. (AAPL) <br>
-                    3. Amazon.com Inc. (AMZN) <br>
-                    4. Facebook Inc. (FB) <br>
-                    5. Alphabet Inc. Class A Shares (GOOGL) <br>
-                    6. Alphabet Inc. Class C Shares (GOOG) <br>
-                    7. Johnson & Johnson (JNJ) <br>
-                    8. Berkshire Hathaway Inc. (BRK.B) <br>
-                    9. Visa Inc. (V) <br>
-                    10. Procter & Gamble (PG) <br>
-            </div>
-            <h3 class="">Aktienkurse anzeigen:</h3>
             <%= form_tag search_stock_path, remote: true, method: :get do %>
+            <h3>Aktienkurse anzeigen:</h3>
             <div class="form-group row">
-                <div class="col-sm-9 no-right-padding no-left-padding">
+                <div class="col-sm-9 no-right-padding">
                     <%= text_field_tag :stock, params[:stock], placeholder: "Tickersymbol", autofocus: true, class:"form-control form-control-lg"%>
                 </div>
                 <div class="col-sm-3 no-left-padding">
@@ -33,5 +19,23 @@
         <% if !@tracked_stocks.empty?%>
         <%= render 'stocks/list' %>
         <% end%>
+        <div class="row">
+            <div class="col-sm-9 no-right-padding">
+                <div class="card-header card-top-10">
+                    <h4>Top 10 Aktien nach Index:</h4>
+                    1. Microsoft Corp. (MSFT)
+                    2. Apple Inc. (AAPL)
+                    3. Amazon.com Inc. (AMZN)
+                    4. Facebook Inc. (FB)
+                    5. Alphabet Inc. Class A Shares (GOOGL)
+                    6. Alphabet Inc. Class C Shares (GOOG)
+                    7. Johnson & Johnson (JNJ)
+                    8. Berkshire Hathaway Inc. (BRK.B)
+                    9. Visa Inc. (V)
+                    10. Procter & Gamble (PG)
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>

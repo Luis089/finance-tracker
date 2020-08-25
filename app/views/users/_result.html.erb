@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-10 no-right-padding no-left-padding">
+    <div class="col-9 no-right-padding">
         <%= render 'layouts/messages' %>
         <%if @stock %>
         <div class="card card-header results-block">
@@ -10,9 +10,11 @@
             <%= link_to 'Folgen', user_stocks_path(user: current_user, ticker: @stock.ticker), 
                     class:"btn btn-success btn-sm ml-3", method: :post%>
             <% else %>
-            <span class="badge badge-secondary">
+            <span class="badge badge-warning">
                 <%if !current_user.under_stock_limit? && !current_user.stock_already_tracked?(@stock.ticker)%>
                 Maximale Anzahl von 10 Kursen erreicht
+                <% elsif current_user.under_stock_limit? && current_user.stock_already_tracked?(@stock.ticker)%>
+                <%= "Du folgst bereits #{@stock.name}" %>
                 <% elsif !current_user.under_stock_limit? && current_user.stock_already_tracked?(@stock.ticker)%>
                 <%= "Du folgst bereits #{@stock.name}" %>
                 <% end%>
