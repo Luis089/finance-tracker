@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-12">
+        <div class="search-area">
+            <%= form_tag search_friend_path, remote: true, method: :get do %>
+            <h3>Freunde suchen:</h3>
+            <div class="form-group row">
+                <div class="col-sm-9 no-right-padding">
+                    <%= text_field_tag :friend, params[:friend], placeholder: "Namen eingeben", autofocus: true, class:"form-control form-control-lg"%>
+                </div>
+                <div class="col-sm-3 no-left-padding">
+                    <%= button_tag type: :submit, class:"btn btn-success" do%>
+                    <%= fa_icon "search 2x" %>
+                    <% end%>
+                </div>
+            </div>
+            <%end%>
+            <div class="mb-1" id="friend_result"></div>
+        </div>
+        <% if !@friends.empty?%>
+        <%= render 'list' %>
+        <% end%>
+    </div>
+</div>
