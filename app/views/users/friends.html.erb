@@ -5,7 +5,7 @@
             <h3>Freunde suchen:</h3>
             <div class="form-group row">
                 <div class="col-sm-9 no-right-padding">
-                    <%= text_field_tag :friend, params[:friend], placeholder: "Namen eingeben", autofocus: true, class:"form-control form-control-lg"%>
+                    <%= text_field_tag :friend, params[:friend], placeholder: "Name oder E-Mail", autofocus: true, class:"form-control form-control-lg"%>
                 </div>
                 <div class="col-sm-3 no-left-padding">
                     <%= button_tag type: :submit, class:"btn btn-success" do%>
@@ -14,7 +14,7 @@
                 </div>
             </div>
             <%end%>
-            <div class="mb-1" id="friend_result"></div>
+            <div class="mb-1" id="friend-results"></div>
         </div>
         <% if !@friends.empty?%>
         <%= render 'list' %>

@@ -4,13 +4,18 @@
             <%= render 'layouts/messages' %>
         </div>
 
-        <%if @friend %>
+        <%if @friends %>
         <div class="card card-header results-block">
-            <strong>Name: </strong> <%= @friend%>
-            <strong>E-Mail: </strong> <%= @friend%>
-            <strong>Letzter Preis: </strong> <%= @friend%>
+            <% @friends.each do |friend|%>
+            <strong>Name: </strong> <%= friend.full_name%>
+            <strong>E-Mail: </strong> <%= friend.email%>
+            <%= link_to "Profil", '#',
+            class:"btn btn-sm btn-info ml-1" %>
             <%= link_to 'Folgen', '#', 
-                                class:"btn btn-success btn-sm ml-3", method: :post%>
+                                class:"btn btn-success btn-sm ml-1", method: :post %>
+            <br>
+            <br>
+            <%end %>
         </div>
         <%end%>
     </div>
