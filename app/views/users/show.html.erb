@@ -1,4 +1,4 @@
-<h2>User details</h2>
+<h3><%="#{@user.first_name}'s Profil"%></h3>
 
 <div class="row">
     <div class="col-8 no-right-padding">
@@ -15,16 +15,20 @@
                             <% if current_user.not_friends_with?(@user.id)%>
                             <%= link_to 'Folgen', friendships_path(friend: @user), 
                                 class:"btn btn-success btn-sm ml-1", method: :post %>
-                            <% else %>
+                            <%else%>
                             <span class="badge badge-secondary">
                                 Bereits befreundet
                             </span>
                             <% end %> </td>
                     </tr>
-
                 </tbody>
             </table>
         </div>
-
+        <% if !@tracked_stocks.empty?%>
+        <%= render 'stocks/list' %>
+        <% else %>
+        <p class="lead mt-2">Dieser User folgt keinen Kursen</p>
+        <% end%>
+        <%= link_to 'Zurück', friends_path, class: "btn btn-primary" %>
     </div>
 </div>

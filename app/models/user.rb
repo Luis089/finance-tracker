@@ -9,7 +9,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def stock_already_tracked?(ticker_symbol)
-    stock = Stock.check_db_for_ticker(ticker_symbol)
+    stock = Stock.check_db(ticker_symbol)
     return false unless stock
     stocks.where(id: stock.id).exists?
   end
@@ -31,21 +31,23 @@ class User < ApplicationRecord
     param.strip!
     to_send_back = (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq
     return nil unless to_send_back
-    return to_send_back
+    to_send_back
   end
 
   def self.first_name_matches(param)
     matches("first_name", param)
   end
+
   def self.last_name_matches(param)
     matches("last_name", param)
   end
+
   def self.email_matches(param)
     matches("email", param)
   end
 
   def self.matches(field_name, param)
-    where("#{field_name} like?", "%#{param}%")
+    where("#{field_name} like ?", "%#{param}%")
   end
 
   def except_current_user(users)

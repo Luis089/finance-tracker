@@ -5,7 +5,7 @@ class FriendshipsController < ApplicationController
     if current_user.save
       flash[:notice] = "#{friend.first_name} zu Liste hinzugefügt."
     else
-      flash[:alert] = "Etwas ist scchiefgelaufen"
+      flash[:alert] = "Etwas ist schiefgelaufen"
     end
     redirect_to friends_path
   end
