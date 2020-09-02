@@ -1,0 +1,30 @@
+<h2>User details</h2>
+
+<div class="row">
+    <div class="col-8 no-right-padding">
+        <div class="results-block">
+            <%= render 'layouts/messages' %>
+        </div>
+        <div class="card card-header results-block">
+            <table class="col-md-12">
+                <tbody>
+                    <tr>
+                        <td><strong>Name: </strong> <%= @user.full_name%></td>
+                        <td><strong>E-Mail: </strong> <%= @user.email%></td>
+                        <td>
+                            <% if current_user.not_friends_with?(@user.id)%>
+                            <%= link_to 'Folgen', friendships_path(friend: @user), 
+                                class:"btn btn-success btn-sm ml-1", method: :post %>
+                            <% else %>
+                            <span class="badge badge-secondary">
+                                Bereits befreundet
+                            </span>
+                            <% end %> </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

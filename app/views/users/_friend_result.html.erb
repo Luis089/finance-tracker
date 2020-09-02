@@ -6,16 +6,27 @@
 
         <%if @friends %>
         <div class="card card-header results-block">
-            <% @friends.each do |friend|%>
-            <strong>Name: </strong> <%= friend.full_name%>
-            <strong>E-Mail: </strong> <%= friend.email%>
-            <%= link_to "Profil", '#',
-            class:"btn btn-sm btn-info ml-1" %>
-            <%= link_to 'Folgen', '#', 
+            <table class="col-md-12">
+                <tbody>
+                    <% @friends.each do |friend|%>
+                    <tr>
+                        <td><strong>Name: </strong> <%= friend.full_name%></td>
+                        <td><strong>E-Mail: </strong> <%= friend.email%></td>
+                        <td><%= link_to "Profil", user_path(friend),
+                                 class:"btn btn-sm btn-info ml-1" %>
+                            <% if current_user.not_friends_with?(friend.id)%>
+                            <%= link_to 'Folgen', friendships_path(friend: friend), 
                                 class:"btn btn-success btn-sm ml-1", method: :post %>
-            <br>
-            <br>
-            <%end %>
+                            <% else %>
+                            <span class="badge">
+                                Bereits befreundet
+                            </span>
+
+                            <% end %> </td>
+                    </tr>
+                    <%end %>
+                </tbody>
+            </table>
         </div>
         <%end%>
     </div>

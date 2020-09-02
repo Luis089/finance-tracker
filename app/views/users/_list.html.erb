@@ -15,7 +15,8 @@
                     <th scope="row"><%= friend.first_name%></th>
                     <td><%= friend.last_name%></td>
                     <td><%= friend.email%></td>
-                    <td><%= link_to "Entfernen", "#", method: :delete, data:{confirm:"Bist du dir sicher?"},  class:"btn btn-sm btn-outline-warning"%>
+                    <td><%= link_to "Profil", user_path(friend), class:"btn btn-sm btn-outline-success"%>
+                        <%= link_to "Entfernen", friendship_path(friend), method: :delete, data:{confirm:"Bist du dir sicher?"},  class:"btn btn-sm btn-outline-warning"%>
                     </td>
                 </tr>
                 <% end%>
